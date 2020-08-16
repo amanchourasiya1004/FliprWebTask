@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import status
 from rest_framework.response import Response
 from .serializers import RegistrationSerializer
@@ -23,4 +23,20 @@ class RegisterView(APIView):
             data['response'] = 'Successfully registered a user.'
         else:
             data = serializer.errors
-        return Response(data)
+            return Response(data)
+        return redirect('/home/')
+
+def LoginView(request):
+    if(request.user.is_authenticated):
+        return redirect('/home/')
+    if request.method == "POST":
+        uname = request.POST.get('username')
+        password = request.POST.get('password')
+        if(uname != "" and password != ""):
+            user = authenticate(username = uname, password = password)
+            if(user != None):
+                login(request, user)
+                return redirect('/home/')
+        else:
+            return render(request, 'authenticate/login.html', {'msg' : 'Account Credentials are invalid.'})
+    return render(request, 'authenticate/login.html', {'msg' : ''})

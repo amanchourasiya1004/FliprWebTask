@@ -1,0 +1,133 @@
+@font-face {
+    font-family: 'Muli-Light';
+    src: url('../fonts/Muli-Light.ttf') format("truetype");
+}
+body{
+    font-family: 'Muli-Light';
+}
+.select{
+    width: 5% !important;
+    font-size: 13px !important;
+    margin: 10px !important;
+}
+.custom-select-lg{
+    padding: 0 0 0 8px !important;
+}
+.indextype{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.hr{
+    width: 100% !important;
+    height: 10px !important;
+}
+.today_val{
+    width: 50% !important;
+    padding-left: 10px !important;
+}
+.range-cont{
+    width: 50% !important;
+    padding-left: 10px !important;
+    padding-right: 20px;
+}
+.val{
+    font-size: 37px;
+    font-weight: 600;
+}
+.rise{
+    color: green;
+    font-size: 18px;
+    margin-top: 7px;
+}
+.date{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 1px;
+}
+.tag{
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 2px;
+}
+.justify-content-between{
+    width: 99% !important;
+}
+/* slider styling */
+.slidecontainer {
+    width: 100%;
+  }
+  
+  .slider {
+    display: inline-block;
+    -webkit-appearance: none;
+    width: 95%;
+    height: 6px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin: 0 6px !important;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+/* slider styling end */
+/* table designing */
+.table{
+    padding-left: 10px !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.overview{
+    font-size: 19px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-left: 10px;
+}
+/* table designing end */
+/* popup bar styling */
+.popup{
+    width: 24%;
+    padding-left: 10px !important;
+    border: 2px solid green;
+    border-radius: 5px;
+    margin: 15px;
+}
+.nse{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+}
+.index{
+    font-size: 20px;
+    font-weight: 600;
+}
+.prev{
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+}
+.text{
+    font-size: 11px;
+}
+/* pop up bar styling end */

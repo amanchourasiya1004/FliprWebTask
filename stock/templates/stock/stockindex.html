@@ -1,0 +1,152 @@
+<div class="popup">
+    <div class="nse">NSE</div>
+    <div class="index">Nifty 50</div>
+    <div class="d-flex justify-content-between">
+        <div class="val">132.15</div>
+        <div class="prev-data">
+            <div class="text">Prev Close</div>
+            <div class="prev">11300.45</div>
+        </div>
+    </div>
+
+</div>
+
+<select class="custom-select custom-select-lg mb-3 select" id = "indextypeSelector" onchange="get_index_data()">
+    <option value="1">NSE</option>
+    <option value="2">BSE</option>
+</select>
+<div class="indextype">
+    Nifty 50
+</div>
+<hr style="height:4px;border-width:0;color:gray;background-color:rgba(0, 0, 0, 0.2)">
+<div class="stock_today d-flex">
+    <div class="today_val">
+        <div class="val">11325.40</div>
+        <div class="rise"><svg width="1em" height="1em" viewBox="0 0 16 16" fill="#4ca">
+            <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+          </svg>23.40 (20.41%)</div>
+        <div class="date">As on 14 Aug 2020 10:43 IST</div>
+    </div>
+    <div class="range-cont">
+        <div class="day-range">
+            <div class="tag">Day Range</div>
+            <div class="d-flex justify-content-between">
+                <div class="day-low">113.23</div>
+                <div class="day-high">1267.23</div>
+            </div>
+            <div class="slidecontainer">
+                <span>
+                    <span>L</span><input type="range" min="1" max="100" value="70" class="slider" id="dayrange" disabled><span>H</span>
+                </span>
+            </div>
+        </div>
+        <div class="day-range">
+            <div class="tag">52 week range</div>
+            <div class="d-flex justify-content-between">
+                <div class="year-low">113.23</div>
+                <div class="year-high">1267.23</div>
+            </div>
+            <div class="slidecontainer">
+                <span>L</span><input type="range" min="1" max="100" value="70" class="slider" id="yearrange" disabled><span>H</span>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="overview">
+    OverView
+</div>
+<table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">Open</th>
+        <td id = "open">12345</td>
+        <th scope="row">Day Low</th>
+        <td id = "daylow">12345</td>
+      </tr>
+      <tr>
+        <th scope="row">Prev Close</th>
+        <td id = "prevclose">12345</td>
+        <th scope="row">52 Week High</th>
+        <td id = "yearhigh">12345</td>
+      </tr>
+      <tr>
+        <th scope="row">Day High</th>
+        <td id = "dayhigh">12345</td>
+        <th scope="row">52 Week Low</th>
+        <td id = "yearlow">12345</td>
+      </tr>
+    </tbody>
+</table>
+<script>
+    var indextype = $(".indextype");
+    var nse = $(".nse");
+    var index = $(".index");
+    var val = $(".val");
+    var prev = $(".prev");
+    var day_low = $(".day-low");
+    var day_high = $(".day-high");
+    var year_low = $(".year-low");
+    var year_high = $(".year-high");
+    var open_stock = $("#open");
+    var daylow = $("#daylow");
+    var dayhigh = $("#dayhigh");
+    var yearlow = $("#yearlow");
+    var yearhigh = $("#yearhigh");
+    var prevclose = $("#prevclose");
+    var dayrange = $("#dayrange");
+    var yearrange = $("#yearrange");
+    function get_index_data(){
+        var conceptName = $('#indextypeSelector').find(":selected").text();
+        if(conceptName === "BSE"){
+            $.ajax({
+            method : 'GET', 
+            url : "/stock/index/BSE/", 
+            success: function(data){
+                console.log(data);
+                updateTable(data, conceptName);
+            },
+            error : function(){
+                console.log("error");
+            }
+        });
+        }
+        else{
+            $.ajax({
+            method : 'GET', 
+            url : '/stock/index/NSE/', 
+            success: function(data){
+                updateTable(data, conceptName);
+                
+            },
+            error : function(){
+                console.log("error");
+            }
+        });
+        }
+    }
+    function updateTable(data, conceptName){
+        indextype.text(data.current.tag);
+        index.text(data.current.tag);
+        nse.text(conceptName);
+        val.text(data.current.close);
+        prev.text(data.prev_close);
+        prevclose.text(data.prev_close);
+        open_stock.text(data.current.open_stock);
+        daylow.text(data.current.low);
+        dayhigh.text(data.current.high);
+        yearlow.text(data.yearly_low);
+        yearhigh.text(data.yearly_high);
+        day_low.text(data.current.low);
+        day_high.text(data.current.high);
+        year_low.text(data.yearly_low);
+        year_high.text(data.yearly_high);
+        dayrange.attr("min", data.current.low);
+        yearrange.attr("min", data.yearly_low);
+        dayrange.attr("max", data.current.high);
+        yearrange.attr("max", data.yearly_high);
+        dayrange.val(data.current.close);
+        yearrange.val(data.current.close);
+    }
+    get_index_data();
+</script>

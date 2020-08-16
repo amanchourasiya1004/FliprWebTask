@@ -1,0 +1,12 @@
+#stockChartContainer{
+    width: 90% !important;
+    margin-top: 60px !important;
+    margin-bottom: 30px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.company_selector{
+    width: 15% !important;
+    font-size: 19px !important;
+    margin: 10px !important;
+}

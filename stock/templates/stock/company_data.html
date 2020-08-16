@@ -1,0 +1,91 @@
+
+<select class="custom-select custom-select-lg mb-3 company_selector" id = "companySelector" onchange="get_company_data()">
+    <option value="1">Reliance Industries Ltd.</option>
+    <option value="2">Cipla</option>
+    <option value="3">Ashok Leyland</option>
+    <option value="4">Eicher Motors</option>
+    <option value="5">Tata Steel Ltd.</option>
+</select>
+
+<div id="stockChartContainer" style="height: 450px; width: 100%;"></div>
+
+<script>
+    function graph_renderer(endpoint, company_name){
+        company_data = []
+        $.ajax({
+            method : 'GET',
+            url : endpoint, 
+            success: function(data){
+                company_data = data;
+                render_chart(company_data, company_name)
+            },
+            error : function(){
+                console.log("error");
+            }
+        });
+        
+        var dataPoints = [];
+        function render_chart(company_data, company_name){
+            var stockChart = new CanvasJS.StockChart("stockChartContainer", {
+                exportEnabled: true,
+                title: {
+                text:company_name
+                },
+                charts: [{
+                axisX: {
+                    crosshair: {
+                    enabled: true,
+                    snapToDataPoint: true,
+                    valueFormatString: "MMM YYYY"
+                    }
+                },
+                axisY: {
+                    
+                    crosshair: {
+                    enabled: true,
+                    snapToDataPoint: true,
+                    valueFormatString: "$#,###.00M",
+                    }
+                },
+                data: [{
+                    type: "line",
+                    xValueFormatString: "MMM YYYY",
+                    yValueFormatString: "$#,###.##M",
+                    dataPoints : randomData(company_data)
+                }]
+                }],
+                navigator: {
+                slider: {
+                    minimum: new Date(2010, 00, 01),
+                    maximum: new Date(2018, 00, 01)
+                }
+                }
+            });
+            stockChart.render();
+        }
+        function randomData(company_data){
+            console.log(company_data);
+            var startX;
+            var xValue, yValue = 0;
+            dps = [];
+            for (var i = 0; i < company_data.length; i += 1) {
+                startX = new Date(parseInt(company_data[i].date.substring(6, 10)), parseInt(company_data[i].date.substring(3, 5)) - 1, parseInt(company_data[i].date.substring(0, 2)), 10, 0, 0, 0);
+                xValue = startX;
+                yValue = company_data[i].close;
+
+                dps.push({
+                    x: xValue,
+                    y: yValue
+                });
+            }
+            return dps;
+        }
+        
+    }
+    graph_renderer('/api/company_data/Reliance Industries Ltd./', 'Reliance Industries Ltd.');
+    function get_company_data(){
+        var conceptName = $('#companySelector').find(":selected").text();
+        graph_renderer('/api/company_data/' + conceptName + '/', conceptName);
+        
+    }
+</script>
