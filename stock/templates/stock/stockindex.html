@@ -8,7 +8,7 @@
             <div class="prev">11300.45</div>
         </div>
     </div>
-
+    
 </div>
 
 <select class="custom-select custom-select-lg mb-3 select" id = "indextypeSelector" onchange="get_index_data()">
@@ -19,12 +19,12 @@
     Nifty 50
 </div>
 <hr style="height:4px;border-width:0;color:gray;background-color:rgba(0, 0, 0, 0.2)">
-<div class="stock_today d-flex">
+<div class="stock_today">
     <div class="today_val">
         <div class="val">11325.40</div>
         <div class="rise"><svg width="1em" height="1em" viewBox="0 0 16 16" fill="#4ca">
             <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
-          </svg>23.40 (20.41%)</div>
+        </svg>23.40 (20.41%)</div>
         <div class="date">As on 14 Aug 2020 10:43 IST</div>
     </div>
     <div class="range-cont">
@@ -58,27 +58,30 @@
 </div>
 <table class="table">
     <tbody>
-      <tr>
-        <th scope="row">Open</th>
-        <td id = "open">12345</td>
-        <th scope="row">Day Low</th>
-        <td id = "daylow">12345</td>
-      </tr>
-      <tr>
-        <th scope="row">Prev Close</th>
-        <td id = "prevclose">12345</td>
-        <th scope="row">52 Week High</th>
-        <td id = "yearhigh">12345</td>
-      </tr>
-      <tr>
-        <th scope="row">Day High</th>
-        <td id = "dayhigh">12345</td>
-        <th scope="row">52 Week Low</th>
-        <td id = "yearlow">12345</td>
-      </tr>
+        <tr>
+            <th scope="row">Open</th>
+            <td id = "open">12345</td>
+            <th scope="row">Day Low</th>
+            <td id = "daylow">12345</td>
+        </tr>
+        <tr>
+            <th scope="row">Prev Close</th>
+            <td id = "prevclose">12345</td>
+            <th scope="row">52 Week High</th>
+            <td id = "yearhigh">12345</td>
+        </tr>
+        <tr>
+            <th scope="row">Day High</th>
+            <td id = "dayhigh">12345</td>
+            <th scope="row">52 Week Low</th>
+            <td id = "yearlow">12345</td>
+        </tr>
     </tbody>
 </table>
 <script>
+    $(".btn-logout").click(function(){
+        window.location.pathname = '/accounts/logout/';
+    });
     var indextype = $(".indextype");
     var nse = $(".nse");
     var index = $(".index");

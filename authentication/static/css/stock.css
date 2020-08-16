@@ -5,10 +5,46 @@
 body{
     font-family: 'Muli-Light';
 }
-.select{
-    width: 5% !important;
-    font-size: 13px !important;
-    margin: 10px !important;
+@media screen and (max-width : 1441px){
+    .select{
+        width: 50% !important;
+        font-size: 13px !important;
+        margin: 10px !important;
+    }
+}
+@media screen and (max-width : 1441px) and (min-width : 768px){
+    
+    .popup{
+        width: 60%;
+        padding-left: 10px !important;
+        border: 2px solid green;
+        border-radius: 5px;
+        margin: 15px;
+    }
+}
+@media screen and (max-width : 768px){
+    
+    .popup{
+        width: 90%;
+        padding-left: 10px !important;
+        border: 2px solid green;
+        border-radius: 5px;
+        margin: 15px;
+    }
+}
+@media screen and (min-width : 1443px){
+    .select{
+        width: 5% !important;
+        font-size: 13px !important;
+        margin: 10px !important;
+    }
+    .popup{
+        width: 24%;
+        padding-left: 10px !important;
+        border: 2px solid green;
+        border-radius: 5px;
+        margin: 15px;
+    }
 }
 .custom-select-lg{
     padding: 0 0 0 8px !important;
@@ -22,14 +58,45 @@ body{
     width: 100% !important;
     height: 10px !important;
 }
-.today_val{
-    width: 50% !important;
-    padding-left: 10px !important;
+@media screen and (max-width : 660px){
+    .stock_today{
+        display: block;
+    }
 }
-.range-cont{
-    width: 50% !important;
-    padding-left: 10px !important;
-    padding-right: 20px;
+@media screen and (min-width : 660px){
+    .stock_today{
+        display: flex;
+    }
+}
+@media screen and (max-width : 660px){
+
+    .today_val{
+        width: 100% !important;
+        padding-left: 10px !important;
+        margin-top: 20px;
+    }
+}
+@media screen and (min-width : 660px){
+    .today_val{
+        width: 50% !important;
+        padding-left: 10px !important;
+    }
+}
+@media screen and (max-width : 660px){
+
+    .range-cont{
+        width: 100% !important;
+        padding-left: 10px !important;
+        padding-right: 20px;
+        margin-top: 20px;
+    }
+}
+@media screen and (min-width : 660px){
+    .range-cont{
+        width: 50% !important;
+        padding-left: 10px !important;
+        padding-right: 20px;
+    }
 }
 .val{
     font-size: 37px;
@@ -60,7 +127,7 @@ body{
   .slider {
     display: inline-block;
     -webkit-appearance: none;
-    width: 95%;
+    width: 90%;
     height: 6px;
     border-radius: 5px;
     background: #d3d3d3;
@@ -107,13 +174,6 @@ body{
 }
 /* table designing end */
 /* popup bar styling */
-.popup{
-    width: 24%;
-    padding-left: 10px !important;
-    border: 2px solid green;
-    border-radius: 5px;
-    margin: 15px;
-}
 .nse{
     font-size: 14px;
     color: rgba(0, 0, 0, 0.5);

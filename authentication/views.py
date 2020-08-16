@@ -5,11 +5,14 @@ from .serializers import RegistrationSerializer
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 
 class RegisterView(APIView):
-
+    
     def get(self, request, *args, **kwargs):
+        if(request.user.is_authenticated):
+            return redirect('/home/')
         return render(request, 'authenticate/register.html', {'error' : '-'})
 
     def post(self, request, *args, **kwargs):
@@ -40,3 +43,8 @@ def LoginView(request):
         else:
             return render(request, 'authenticate/login.html', {'msg' : 'Account Credentials are invalid.'})
     return render(request, 'authenticate/login.html', {'msg' : ''})
+
+@login_required
+def LogoutView(request):
+    logout(request)
+    return redirect('LoginView')
