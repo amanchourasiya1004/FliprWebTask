@@ -10,6 +10,9 @@
 <div id="stockChartContainer" style="height: 450px; width: 100%;"></div>
 <button type="submit" class="btn-logout">Logout</button>
 <script>
+    $(".btn-logout").click(function(){
+        window.location.pathname = '/accounts/logout/';
+    });
     function graph_renderer(endpoint, company_name){
         company_data = []
         $.ajax({
