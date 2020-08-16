@@ -1,0 +1,5 @@
+asgiref==3.2.3
+Django==3.0.2
+djangorestframework==3.11.1
+requests==2.21.0
+virtualenv==15.1.0
